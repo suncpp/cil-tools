@@ -6,14 +6,22 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'js/[name].[contenthash:10].js',
+        filename: 'js/[name].[hash].js',
         path: path.resolve(__dirname, '../dist')
     },
     module: {
         rules: [
             {
-                test: /\.(css|less)$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
+                enforce: 'pre',
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                // include: [APP_PATH],
+                loader: 'eslint-loader',
+                options: {
+                    emitWarning: true, // 这个配置需要打开，才能在控制台输出warning信息
+                    emitError: true, // 这个配置需要打开，才能在控制台输出error信息
+                    fix: true // 是否自动修复，如果是，每次保存时会自动修复可以修复的部分
+                }
             },
             {
                 test: /\.(css|less)$/,
@@ -38,11 +46,16 @@ module.exports = {
                 ]
             },
             {
-                test: /\.js$/,
-                use: [
-                    { loader: 'babel-loader'}
-                ]
-            }
+                test: /\.jsx?$/,
+                exclude: /(node_modules)/,
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: ['@babel/preset-react']
+                  },
+                },
+            },
+            { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
         ]
     },
     resolve: {
