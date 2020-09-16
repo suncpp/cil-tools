@@ -16,6 +16,6 @@ module.exports = merge(webpackBase, {
         open: true,
         port: 8081,
         hot: true,
-        hotOnly: true
+        // hotOnly: true
     },
 });

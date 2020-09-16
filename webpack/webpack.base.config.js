@@ -57,7 +57,7 @@ module.exports = {
     },
     resolve: {
         //引入路径是不用写对应的后缀名
-        extensions: ['.js','.jsx', '.less', '.css'],
+        extensions: ['.js','.jsx', '.tsx', '.less', '.css'],
         alias: {
           //用@直接指引到src目录下
           '@': path.resolve(__dirname, './src'),
