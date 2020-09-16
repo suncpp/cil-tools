@@ -25,7 +25,7 @@ module.exports = {
             },
             {
                 test: /\.(css|less)$/,
-                include: path.resolve(__dirname, './src'),// 这里会直接到 src 文件下找 less/css 文件进行编译，这里是项目优化的一个小技巧
+                // include: path.resolve(__dirname, './src'),// 这里会直接到 src 文件下找 less/css 文件进行编译，这里是项目优化的一个小技巧
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -49,10 +49,7 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
                 use: {
-                  loader: 'babel-loader',
-                  options: {
-                    presets: ['@babel/preset-react']
-                  },
+                  loader: 'babel-loader'
                 },
             },
             { test: /\.tsx?$/, loader: "awesome-typescript-loader" }

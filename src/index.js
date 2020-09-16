@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import { Button } from 'antd';
+import './index.css'
+
 
 class App extends Component {
     render() {
         return(
             <div>
                 halo
+                <Button type="primary">按钮</Button>
             </div>
         )
     }
