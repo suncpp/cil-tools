@@ -1,10 +1,18 @@
+/*
+ * @Author: CaoPengpeng
+ * @since: 2020-09-22 16:21:39
+ * @LastAuthor: Do not edit
+ * @lastTime: 2020-09-23 10:56:16
+ * @FilePath: /cil-tools/webpack/webpack.base.config.js
+ * @message: 
+ */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
         filename: 'js/[name].[hash].js',
         path: path.resolve(__dirname, '../dist')
@@ -37,14 +45,20 @@ module.exports = {
                     }, 'css-loader', 'postcss-loader', 'less-loader']
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|jpeg|gif)$/,
                 use: [
                     {
-                        loader: 'file-loader',
-                        options: {}
+                        loader: 'url-loader',
+                        options: {
+                            // limit: 500
+                        }
                     }
                 ]
             },
+            // {
+            //     test: /\.(png|jpg|gif)$/,
+            //     use: ['file-loader'],
+            // },
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
@@ -57,7 +71,7 @@ module.exports = {
     },
     resolve: {
         //引入路径是不用写对应的后缀名
-        extensions: ['.js','.jsx', '.less', '.css'],
+        extensions: ['.js','.jsx', '.tsx', '.less', '.css'],
         alias: {
           //用@直接指引到src目录下
           '@': path.resolve(__dirname, './src'),
