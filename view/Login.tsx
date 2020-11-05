@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Row, Col, } from 'antd';
-import './Head.less';
+import './Login.less';
 
 
 class Head extends React.Component {

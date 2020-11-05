@@ -1,3 +1,11 @@
+/*
+ * @Author: CaoPengpeng
+ * @since: 2020-09-22 16:21:39
+ * @LastAuthor: Do not edit
+ * @lastTime: 2020-10-16 14:05:03
+ * @文件相对于项目的路径: /cil-tools/.eslintrc.js
+ * @message: 
+ */
 module.exports = {
     "root": true,
     "env": {
@@ -33,7 +41,8 @@ module.exports = {
     "rules": {
       "no-extra-semi": 0, // 禁止不必要的分号
       "quotes": ['error', 'single'], // 强制使用单引号
-      "no-unused-vars": 0 // 不允许未定义的变量
+      "no-unused-vars": 0, // 不允许未定义的变量
+      "indent": [1, 2,{"SwitchCase":1}],//缩进两个空格
       // ...你自己的配置
     }
   };
